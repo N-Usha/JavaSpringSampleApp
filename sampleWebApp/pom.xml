@@ -12,7 +12,7 @@
 
     <groupId>com.microsoft.sampleWebApp</groupId>
     <artifactId>sampleWebApp</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>Sample Spring App</name>
 
     <dependencies>
