@@ -3,6 +3,9 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
+variables:
+  azureSubscription: 'JavaSpring - Service Endpoint'
+
 jobs:
   - job: MavenBuild
     steps:
@@ -27,7 +30,7 @@ jobs:
     - task: AzureWebApp@1
       displayName: 'Azure Web App Deploy: LinuxTomcatApp'
       inputs:
-        azureSubscription: 'JavaSpring - Service Endpoint'
+        azureSubscription: $(azureSubscription)
         appType: webAppLinux
         appName: LinuxTomcatApp
         package: '$(System.ArtifactsDirectory)/**/target/*.war'
