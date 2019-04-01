@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.microsoft</groupId>
+	<artifactId>ROOT</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<name>Sample Spring App With Tests</name>
+
+
+
+    <modules>        <!-- child modules to be executed as part of this build -->
+        <module>sampleWebApp</module>
+        <module>sampleWebApp.FunctionalTests</module>
+    </modules>
+<!--
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-webapp-maven-plugin</artifactId>
+             
+            <version>1.5.3</version>
+            <configuration>
+                <schemaVersion>v2</schemaVersion>
+                <resourceGroup>javadevops</resourceGroup>
+                <appName>JavaSpringLinuxTomcat</appName>
+                <runtime>
+                    <os>linux</os>
+                    <javaVersion>jre8</javaVersion>
+                    <webContainer>tomcat 8.5</webContainer>
+                </runtime>
+                <deployment>
+                    <resources>
+                        <resource>
+                            <directory>${project.basedir}/target</directory>
+                            <includes>
+                                <include>*.war</include>
+                            </includes>
+                        </resource>
+                    </resources>
+                </deployment>
+            </configuration>
+        </plugin>
+    </plugins>
+</build> 
+-->
+</project>
