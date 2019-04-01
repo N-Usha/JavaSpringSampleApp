@@ -43,7 +43,7 @@ jobs:
       inputs:
         azureSubscription: $(azureSubscription)
         appType: webAppLinux
-        appName: $(appName_TomCat)
+        appName: $(appName_JSE)
         package: '$(System.ArtifactsDirectory)/**/target/*.war'
         runtimeStack: 'JAVA|11-java11'
         startUpCommand: 'mvn spring-boot:run'
