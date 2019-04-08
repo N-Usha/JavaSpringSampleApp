@@ -6,7 +6,6 @@
 variables:
   azureSubscription: 'JavaSpring - Service Endpoint'
   appName_TomCat: 'LinuxTomcatApp'
-  appName_JSE: 'LinuxJSEApp'
 
 jobs:
   - job: MavenBuild
@@ -37,13 +36,4 @@ jobs:
         appName: $(appName_TomCat)
         package: '$(System.ArtifactsDirectory)/**/target/*.war'
         runtimeStack: 'TOMCAT|8.5-java11'
-        startUpCommand: 'mvn spring-boot:run'
-    - task: AzureWebApp@1
-      displayName: 'Azure Web App Deploy: LinuxJSEApp'
-      inputs:
-        azureSubscription: $(azureSubscription)
-        appType: webAppLinux
-        appName: $(appName_JSE)
-        package: '$(System.ArtifactsDirectory)/**/target/*.war'
-        runtimeStack: 'JAVA|11-java11'
         startUpCommand: 'mvn spring-boot:run'
