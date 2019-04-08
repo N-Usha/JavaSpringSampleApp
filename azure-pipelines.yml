@@ -19,7 +19,9 @@ jobs:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifacts: drop'
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)'
+        PathtoPublish: $(build.artifactstagingdirectory) 
+#        PathtoPublish: '$(Build.SourcesDirectory)'
+
   
   - job: Deploy
     dependsOn: MavenBuild
@@ -34,6 +36,6 @@ jobs:
         azureSubscription: $(azureSubscription)
         appType: webAppLinux
         appName: $(appName_TomCat)
-        package: '$(System.ArtifactsDirectory)/**/target/*.war'
+        package: '$(build.artifactstagingdirectory)/**/target/*.war'
         runtimeStack: 'TOMCAT|8.5-java11'
         startUpCommand: 'mvn spring-boot:run'
