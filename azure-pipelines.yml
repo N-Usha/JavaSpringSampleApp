@@ -4,8 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 variables:
-  azureSubscription: 'JavaSpring - Service Endpoint'
-  appName_TomCat: 'LinuxTomcatApp'
+  azureSubscription: 'RMPM'
+  appName_JSE: 'LinuxJSE'
 
 jobs:
   - job: MavenBuild
@@ -31,11 +31,11 @@ jobs:
       inputs:
         artifactName: drop
     - task: AzureWebApp@1
-      displayName: 'Azure Web App Deploy: LinuxTomcatApp'
+      displayName: 'Azure Web App Deploy: LinuxJSEApp'
       inputs:
         azureSubscription: $(azureSubscription)
         appType: webAppLinux
-        appName: $(appName_TomCat)
+        appName: $(appName_JSE)
         package: '$(build.artifactstagingdirectory)/**/target/*.war'
         runtimeStack: 'TOMCAT|8.5-java11'
         startUpCommand: 'mvn spring-boot:run'
