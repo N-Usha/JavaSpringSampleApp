@@ -14,13 +14,18 @@ jobs:
       displayName: 'Maven $(mavenPOMFile)'
       inputs:
         mavenPomFile: sampleWebApp/pom.xml
-        testResultsFiles: '**/TEST*.xml'
-        mavenAuthenticateFeed: true
+
+     - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)'
+        Contents: '**/*.war'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifacts: drop'
       inputs:
-        PathtoPublish: $(build.artifactstagingdirectory) 
-#        PathtoPublish: '$(Build.SourcesDirectory)'
+        PathtoPublish: $(build.artifactstagingdirectory)
 
   
   - job: Deploy
@@ -37,5 +42,3 @@ jobs:
         appType: webAppLinux
         appName: $(appName_JSE)
         package: '$(build.artifactstagingdirectory)/**/target/*.war'
-        runtimeStack: 'TOMCAT|8.5-java11'
-        startUpCommand: 'mvn spring-boot:run'
