@@ -15,7 +15,7 @@ jobs:
       inputs:
         mavenPomFile: sampleWebApp/pom.xml
 
-     - task: CopyFiles@2
+    - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
       inputs:
         SourceFolder: '$(system.defaultworkingdirectory)'
